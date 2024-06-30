@@ -4,6 +4,10 @@ public class Book {
 
 	private int noOfCopies;
 
+	Book(int noOfCopies) {
+		this.noOfCopies = noOfCopies;
+	}
+
 	public int getNoOfCopies() {
 		return noOfCopies;
 	}
