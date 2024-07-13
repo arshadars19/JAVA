@@ -1,0 +1,158 @@
+Introduction to Streams:
+Streams in Java represent a sequence of elements that can be processed in parallel or sequentially. The Stream API allows you to perform functional-style operations on collections or other data sources. Streams are designed to be expressive, concise, and support parallel processing for efficient execution.
+
+Creating Streams:
+There are several ways to create a Stream in Java:
+
+From a collection: Collection.stream() or Collection.parallelStream()
+From an array: Arrays.stream()
+From individual elements: Stream.of()
+From a range of values: IntStream.range(), LongStream.range(), etc.
+From a file: Files.lines()
+From a generator function: Stream.generate()
+Intermediate Operations:
+Intermediate operations transform the elements of a Stream into another Stream. Here are some commonly used intermediate operations:
+
+Filtering: filter(Predicate)
+Mapping: map(Function)
+Sorting: sorted()
+Distinct elements: distinct()
+Limiting elements: limit(n)
+Terminal Operations:
+Terminal operations produce a result or a side effect. Here are some important terminal operations:
+
+Collecting: collect(Collector)
+Reducing: reduce(BinaryOperator)
+Iterating: forEach(Consumer)
+Finding: findFirst(), findAny()
+Matching: anyMatch(Predicate), allMatch(Predicate), noneMatch(Predicate)
+Parallel Streams:
+Streams can be processed sequentially or in parallel. Parallel processing utilizes multiple threads to process the elements concurrently, potentially improving performance on multi-core systems. You can create parallel streams using the parallelStream() method.
+
+Stream Performance Considerations:
+When working with Streams, consider the following factors:
+
+Lazy evaluation: Streams are lazily evaluated, so operations are only performed when needed.
+Statelessness: Stream operations should ideally be stateless to ensure thread safety in parallel processing.
+Stream size: For certain operations, the size of the Stream can affect performance.
+This overview should give you a solid understanding of the Stream API in Java. Each topic can be explored in more detail as needed. Happy coding! Let me know if you have any specific questions or need further clarification on any topic.
+
+
+
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        // Creating a Stream from a collection
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        numbers.stream()
+            .filter(n -> n % 2 == 0) // Filtering even numbers
+            .map(n -> n * n) // Mapping to their squares
+            .forEach(System.out::println); // Printing each squared number
+
+        // Output: 4 16
+
+        // Creating a Stream from an array
+        String[] names = {"Alice", "Bob", "Charlie"};
+        Arrays.stream(names)
+            .sorted() // Sorting the names in alphabetical order
+            .forEach(System.out::println); // Printing each sorted name
+
+        // Output: Alice Bob Charlie
+
+        // Creating a Stream from individual elements
+        Stream.of(1, 2, 3)
+            .distinct() // Removing duplicates
+            .limit(2) // Limiting to 2 elements
+            .forEach(System.out::println); // Printing each element
+
+        // Output: 1 2
+
+        // Terminal operation - Collecting
+        List<String> fruits = Arrays.asList("Apple", "Banana", "Cherry");
+        String fruitString = fruits.stream()
+            .collect(Collectors.joining(", ")); // Collecting the fruits into a single string
+        System.out.println(fruitString);
+
+        // Output: Apple, Banana, Cherry
+
+        // Terminal operation - Reducing
+        List<Integer> numbers2 = Arrays.asList(1, 2, 3, 4, 5);
+        int sum = numbers2.stream()
+            .reduce(0, Integer::sum); // Calculating the sum of the numbers
+        System.out.println(sum);
+
+        // Output: 15
+
+        // Terminal operation - Finding
+        List<String> names2 = Arrays.asList("Alice", "Bob", "Charlie");
+        String firstName = names2.stream()
+            .findFirst() // Finding the first name
+            .orElse("No name found");
+        System.out.println(firstName);
+
+        // Output: Alice
+
+        // Terminal operation - Matching
+        List<Integer> numbers3 = Arrays.asList(1, 2, 3, 4, 5);
+        boolean allEven = numbers3.stream()
+            .allMatch(n -> n % 2 == 0); // Checking if all numbers are even
+        System.out.println(allEven);
+
+        // Output: false
+    }
+}
+
+
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        // Creating a Stream from a generator function
+        Stream.generate(() -> "Hello")
+            .limit(3) // Limiting to 3 elements
+            .forEach(System.out::println); // Printing each element
+
+        // Output: Hello Hello Hello
+
+        // Intermediate operation - Mapping with flatMap
+        List<List<Integer>> nestedList = Arrays.asList(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(4, 5, 6),
+                Arrays.asList(7, 8, 9)
+        );
+        nestedList.stream()
+                .flatMap(List::stream) // Flattening the nested list
+                .forEach(System.out::println); // Printing each flattened element
+
+        // Output: 1 2 3 4 5 6 7 8 9
+
+        // Intermediate operation - Peeking
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        numbers.stream()
+                .peek(n -> System.out.println("Original number: " + n)) // Peeking at each number
+                .map(n -> n * n)
+                .peek(n -> System.out.println("Squared number: " + n)) // Peeking at each squared number
+                .forEach(System.out::println); // Printing each squared number
+
+        /* Output:
+           Original number: 1
+           Squared number: 1
+           1
+           Original number: 2
+           Squared number: 4
+           4
+           Original number: 3
+           Squared number: 9
+            9
+           Original number: 4
+           Squared number: 16
+           16
+           Original number: 5
+           Squared number: 25
+           25
+         */
+    }
+}

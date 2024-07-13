@@ -1,0 +1,987 @@
+collection refers to a group of objects or elements that are gathered together as a single unit.
+
+Collections Framework, which provides a set of interfaces and classes to manipulate and store collections of objects.
+add(element): Adds an element to the collection.
+
+addAll(collection): Adds all elements from another collection to the current collection.
+
+remove(element): Removes a single occurrence of the specified element from the collection.
+
+removeAll(collection): Removes all elements in the current collection that are also present in another collection.
+
+retainAll(collection): Removes all elements in the current collection except those that are also present in another collection.
+
+contains(element): Checks if the collection contains the specified element.
+
+containsAll(collection): Checks if the collection contains all elements from another collection.
+
+isEmpty(): Checks if the collection is empty. 
+
+size(): Returns the number of elements in the collection.
+
+clear(): Removes all elements from the collection.
+
+iterator(): Returns an iterator to iterate over the elements in the collection.
+
+public class CollectionExample {
+    public static void main(String[] args) {
+        // Create a collection
+        Collection<String> collection = new ArrayList<>();
+
+        // Add elements to the collection
+        collection.add("Apple");
+        collection.add("Banana");
+        collection.add("Orange");
+
+        // Check if the collection contains "Apple"
+        boolean containsApple = collection.contains("Apple");
+        System.out.println("Contains Apple: " + containsApple);
+
+        // Remove the element "Banana" from the collection
+        collection.remove("Banana");
+
+        // Check if the collection is empty
+        boolean isEmpty = collection.isEmpty();
+        System.out.println("Is collection empty: " + isEmpty);
+
+        // Get the size of the collection
+        int size = collection.size();
+        System.out.println("Size of the collection: " + size);
+
+        // Iterate over the collection using an iterator
+        Iterator<String> iterator = collection.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+        // Clear the collection
+        collection.clear();
+
+        // Check if the collection is empty after clearing
+        boolean isEmptyAfterClear = collection.isEmpty();
+        System.out.println("Is collection empty after clearing: " + isEmptyAfterClear);
+    }
+}
+
+
+List: Represents an ordered collection of elements that allows duplicates. Examples include ArrayList and LinkedList, Vector And Stack
+add(index, element): Inserts an element at the specified index in the list.
+
+get(index): Retrieves the element at the specified index.
+
+set(index, element): Replaces the element at the specified index with the given element.
+
+remove(index): Removes the element at the specified index from the list.
+
+indexOf(element): Returns the index of the first occurrence of the specified element in the list.
+
+lastIndexOf(element): Returns the index of the last occurrence of the specified element in the list.
+
+subList(fromIndex, toIndex): Returns a view of the portion of the list between the specified fromIndex (inclusive) and toIndex (exclusive).
+
+public class ListExample {
+    public static void main(String[] args) {
+        // Create a list
+        List<String> list = new ArrayList<>();
+
+        // Add elements to the list
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Orange");
+
+        // Get the element at index 1
+        String elementAtIndex1 = list.get(1);
+        System.out.println("Element at index 1: " + elementAtIndex1);
+
+        // Replace the element at index 0
+        list.set(0, "Mango");
+
+        // Remove the element at index 2
+        list.remove(2);
+
+        // Get the index of "Banana"
+        int index = list.indexOf("Banana");
+        System.out.println("Index of Banana: " + index);
+
+        // Iterate over the list using a for-each loop
+        for (String element : list) {
+            System.out.println(element);
+        }
+
+        // Get a sub-list from index 1 to 2 (exclusive)
+        List<String> subList = list.subList(1, 2);
+        System.out.println("Sub-list: " + subList);
+    }
+}
+
+
+ArrayList:- It uses a dynamic array to store the duplicate element of different data types. 
+The ArrayList class maintains the insertion order and is non-synchronized. 
+The elements stored in the ArrayList class can be randomly accessed.
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        // Create an ArrayList
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Adding elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        fruits.add("Mango");
+
+        // Accessing elements using index
+        System.out.println("Element at index 2: " + fruits.get(2));
+
+        // Updating an element
+        fruits.set(1, "Grapes");
+        System.out.println("Updated ArrayList: " + fruits);
+
+        // Removing an element
+        fruits.remove("Cherry");
+        System.out.println("ArrayList after removing 'Cherry': " + fruits);
+
+        // Iterating over the ArrayList using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String fruit : fruits) {
+            System.out.print(fruit + " ");
+        }
+        System.out.println();
+
+        // Iterating over the ArrayList using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = fruits.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if an element exists
+        System.out.println("Does ArrayList contain 'Apple'? " + fruits.contains("Apple"));
+
+        // Size of the ArrayList
+        System.out.println("Size of ArrayList: " + fruits.size());
+    }
+}
+
+LinkedList:- LinkedList class uses a doubly linked list to store the elements. 
+	     It provides a linked-list data structure.
+             It inherits the AbstractList class and implements List and Deque interfaces.
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> countries = new LinkedList<>();
+
+        // Adding elements to the LinkedList
+        countries.add("USA");
+        countries.add("Canada");
+        countries.add("Australia");
+        countries.add("India");
+
+        // Accessing elements using index
+        System.out.println("Element at index 2: " + countries.get(2));
+
+        // Updating an element
+        countries.set(1, "Germany");
+        System.out.println("Updated LinkedList: " + countries);
+
+        // Removing an element
+        countries.remove("Australia");
+        System.out.println("LinkedList after removing 'Australia': " + countries);
+
+        // Iterating over the LinkedList using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String country : countries) {
+            System.out.print(country + " ");
+        }
+        System.out.println();
+
+        // Iterating over the LinkedList using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = countries.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if an element exists
+        System.out.println("Does LinkedList contain 'Canada'? " + countries.contains("Canada"));
+
+        // Size of the LinkedList
+        System.out.println("Size of LinkedList: " + countries.size());
+    }
+}
+
+set :-
+add(element): Adds an element to the set, if it is not already present.
+
+remove(element): Removes the specified element from the set, if it exists.
+
+contains(element): Checks if the set contains the specified element.
+
+isEmpty(): Checks if the set is empty.
+
+size(): Returns the number of elements in the set.
+
+clear(): Removes all elements from the set.
+public class SetExample {
+    public static void main(String[] args) {
+        // Create a set
+        Set<String> set = new HashSet<>();
+
+        // Add elements to the set
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Orange");
+        set.add("Apple"); // Duplicate element, will be ignored
+
+        // Check if the set contains "Apple"
+        boolean containsApple = set.contains("Apple");
+        System.out.println("Contains Apple: " + containsApple);
+
+        // Remove the element "Banana" from the set
+        set.remove("Banana");
+
+        // Check if the set is empty
+        boolean isEmpty = set.isEmpty();
+        System.out.println("Is set empty: " + isEmpty);
+
+        // Get the size of the set
+        int size = set.size();
+        System.out.println("Size of the set: " + size);
+
+        // Iterate over the set using a for-each loop
+        for (String element : set) {
+            System.out.println(element);
+        }
+
+        // Clear the set
+        set.clear();
+
+        // Check if the set is empty after clearing
+        boolean isEmptyAfterClear = set.isEmpty();
+        System.out.println("Is set empty after clearing: " + isEmptyAfterClear);
+    }
+}
+
+
+HashSet:- HashSet stores the elements by using a mechanism called hashing. 
+	  HashSet contains unique elements only. 
+	  HashSet allows null value.
+	  HashSet class is non synchronized.
+	  HashSet doesn't maintain the insertion order.
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> cities = new HashSet<>();
+
+        // Adding elements to the HashSet
+        cities.add("New York");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Tokyo");
+
+        // Adding a duplicate element
+        cities.add("London");
+
+        // Accessing elements
+        System.out.println("HashSet: " + cities);
+
+        // Removing an element
+        cities.remove("Paris");
+        System.out.println("HashSet after removing 'Paris': " + cities);
+
+        // Iterating over the HashSet using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String city : cities) {
+            System.out.print(city + " ");
+        }
+        System.out.println();
+
+        // Iterating over the HashSet using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = cities.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if an element exists
+        System.out.println("Does HashSet contain 'London'? " + cities.contains("London"));
+
+        // Size of the HashSet
+        System.out.println("Size of HashSet: " + cities.size());
+    }
+}
+
+LinkedHashSet:- LinkedHashSet class contains unique elements only like HashSet.
+		LinkedHashSet class provides all optional set operations and permits null elements.
+		LinkedHashSet class is non-synchronized.
+		LinkedHashSet class maintains insertion order
+
+public class LinkedHashSetExample {
+    public static void main(String[] args) {
+        // Create a LinkedHashSet
+        LinkedHashSet<String> countries = new LinkedHashSet<>();
+
+        // Adding elements to the LinkedHashSet
+        countries.add("USA");
+        countries.add("Canada");
+        countries.add("Australia");
+        countries.add("India");
+
+        // Adding a duplicate element
+        countries.add("Canada");
+
+        // Accessing elements
+        System.out.println("LinkedHashSet: " + countries);
+
+        // Removing an element
+        countries.remove("Australia");
+        System.out.println("LinkedHashSet after removing 'Australia': " + countries);
+
+        // Iterating over the LinkedHashSet using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String country : countries) {
+            System.out.print(country + " ");
+        }
+        System.out.println();
+
+        // Iterating over the LinkedHashSet using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = countries.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if an element exists
+        System.out.println("Does LinkedHashSet contain 'Canada'? " + countries.contains("Canada"));
+
+        // Size of the LinkedHashSet
+        System.out.println("Size of LinkedHashSet: " + countries.size());
+    }
+}
+
+TreeSet:- Java TreeSet class contains unique elements only like HashSet.
+	  Java TreeSet class access and retrieval times are quiet fast.
+	  Java TreeSet class doesn't allow null element.
+	  Java TreeSet class is non synchronized.
+	  Java TreeSet class maintains ascending order.
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<String> names = new TreeSet<>();
+
+        // Adding elements to the TreeSet
+        names.add("John");
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Emily");
+
+        // Adding a duplicate element
+        names.add("Bob");
+
+        // Accessing elements
+        System.out.println("TreeSet: " + names);
+
+        // Removing an element
+        names.remove("Alice");
+        System.out.println("TreeSet after removing 'Alice': " + names);
+
+        // Iterating over the TreeSet using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String name : names) {
+            System.out.print(name + " ");
+        }
+        System.out.println();
+
+        // Iterating over the TreeSet using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = names.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if an element exists
+        System.out.println("Does TreeSet contain 'Bob'? " + names.contains("Bob"));
+
+        // Size of the TreeSet
+        System.out.println("Size of TreeSet: " + names.size());
+    }
+}
+
+Queue:- It is used to keep the elements that are processed in the First In First Out (FIFO) manner. 
+It is an ordered list of objects, where insertion of elements occurs at the end of the list, and removal of elements occur at the beginning of the list.
+
+public class QueueExample {
+    public static void main(String[] args) {
+        // Create a Queue using LinkedList
+        Queue<String> queue = new LinkedList<>();
+
+        // Adding elements to the Queue
+        queue.offer("Alice");
+        queue.offer("Bob");
+        queue.offer("Charlie");
+        queue.offer("David");
+
+        // Accessing the head of the Queue
+        System.out.println("Head of the Queue: " + queue.peek());
+
+        // Removing elements from the Queue
+        System.out.println("Removed element: " + queue.poll());
+
+        // Iterating over the Queue using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String element : queue) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Iterating over the Queue using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = queue.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if the Queue contains an element
+        System.out.println("Does Queue contain 'Charlie'? " + queue.contains("Charlie"));
+
+        // Size of the Queue
+        System.out.println("Size of the Queue: " + queue.size());
+    }
+}
+
+
+PriorityQueue:- sometimes the elements of the queue are needed to be processed according to the priority, that's where a PriorityQueue comes into action.
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> numbers = new PriorityQueue<>();
+
+        // Adding elements to the PriorityQueue
+        numbers.offer(5);
+        numbers.offer(3);
+        numbers.offer(8);
+        numbers.offer(1);
+
+        // Accessing the head of the PriorityQueue
+        System.out.println("Head of the PriorityQueue: " + numbers.peek());
+
+        // Removing elements from the PriorityQueue
+        System.out.println("Removed element: " + numbers.poll());
+
+        // Iterating over the PriorityQueue using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (Integer number : numbers) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
+
+        // Iterating over the PriorityQueue using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<Integer> iterator = numbers.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if the PriorityQueue contains an element
+        System.out.println("Does PriorityQueue contain '8'? " + numbers.contains(8));
+
+        // Size of the PriorityQueue
+        System.out.println("Size of the PriorityQueue: " + numbers.size());
+    }
+}
+
+Deque:- The Deque supports the addition as well as the removal of elements from both ends of the data structure. Therefore, a deque can be used as a stack or a queue. We know that the stack supports the Last In First Out (LIFO) operation, and the operation First In First Out is supported by a queue.
+public class DequeExample {
+    public static void main(String[] args) {
+        // Create a Deque using ArrayDeque
+        Deque<String> deque = new ArrayDeque<>();
+
+        // Adding elements to the Deque
+        deque.addFirst("Alice");
+        deque.addLast("Bob");
+        deque.addLast("Charlie");
+        deque.addFirst("David");
+
+        // Accessing the first and last elements of the Deque
+        System.out.println("First element: " + deque.getFirst());
+        System.out.println("Last element: " + deque.getLast());
+
+        // Removing elements from the Deque
+        System.out.println("Removed first element: " + deque.removeFirst());
+        System.out.println("Removed last element: " + deque.removeLast());
+
+        // Iterating over the Deque using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (String element : deque) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Iterating over the Deque using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<String> iterator = deque.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if the Deque contains an element
+        System.out.println("Does Deque contain 'Charlie'? " + deque.contains("Charlie"));
+
+        // Size of the Deque
+        System.out.println("Size of the Deque: " + deque.size());
+    }
+}
+
+ArrayDeque:- Unlike Queue, we can add or remove elements from both sides.
+Null elements are not allowed in the ArrayDeque.
+ArrayDeque is not thread safe, in the absence of external synchronization.
+ArrayDeque has no capacity restrictions.
+ArrayDeque is faster than LinkedList and Stack.
+
+public class ArrayDequeExample {
+    public static void main(String[] args) {
+        // Create an ArrayDeque
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+
+        // Adding elements to the front of the ArrayDeque
+        deque.addFirst(5);
+        deque.addFirst(3);
+        deque.addFirst(8);
+
+        // Adding elements to the end of the ArrayDeque
+        deque.addLast(2);
+        deque.addLast(9);
+
+        // Accessing the first and last elements of the ArrayDeque
+        System.out.println("First element: " + deque.getFirst());
+        System.out.println("Last element: " + deque.getLast());
+
+        // Removing elements from the front and end of the ArrayDeque
+        System.out.println("Removed first element: " + deque.removeFirst());
+        System.out.println("Removed last element: " + deque.removeLast());
+
+        // Iterating over the ArrayDeque using enhanced for loop
+        System.out.print("Iterating using enhanced for loop: ");
+        for (Integer element : deque) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Iterating over the ArrayDeque using iterator
+        System.out.print("Iterating using iterator: ");
+        Iterator<Integer> iterator = deque.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // Checking if the ArrayDeque contains an element
+        System.out.println("Does ArrayDeque contain '3'? " + deque.contains(3));
+
+        // Size of the ArrayDeque
+        System.out.println("Size of the ArrayDeque: " + deque.size());
+    }
+}
+
+Map:- A map contains values on the basis of key, i.e. key and value pair. Each key and value pair is known as an entry. 
+A Map contains unique keys.
+A Map is useful if you have to search, update or delete elements on the basis of a key.
+A Map can't be traversed, so you need to convert it into Set using keySet() or entrySet() method.
+HashMap	HashMap is the implementation of Map, but it doesn't maintain any order.
+LinkedHashMap	LinkedHashMap is the implementation of Map. It inherits HashMap class. It maintains insertion order.
+TreeMap	TreeMap is the implementation of Map and SortedMap. It maintains ascending order.
+
+public class MapExample {
+    public static void main(String[] args) {
+        // Create a Map
+        Map<String, Integer> map = new HashMap<>();
+
+        // Adding key-value pairs to the Map
+        map.put("Apple", 10);
+        map.put("Banana", 5);
+        map.put("Orange", 8);
+
+        // Accessing the value associated with a key
+        System.out.println("Value for 'Apple': " + map.get("Apple"));
+
+        // Updating the value associated with a key
+        map.put("Apple", 15);
+        System.out.println("Updated value for 'Apple': " + map.get("Apple"));
+
+        // Removing a key-value pair from the Map
+        map.remove("Banana");
+        System.out.println("Map after removing 'Banana': " + map);
+
+        // Iterating over the Map using keySet()
+        System.out.print("Iterating using keySet(): ");
+        for (String key : map.keySet()) {
+            System.out.print(key + "=" + map.get(key) + " ");
+        }
+        System.out.println();
+
+        // Iterating over the Map using entrySet()
+        System.out.print("Iterating using entrySet(): ");
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.print(entry.getKey() + "=" + entry.getValue() + " ");
+        }
+        System.out.println();
+
+        // Checking if the Map contains a key or value
+        System.out.println("Does Map contain key 'Orange'? " + map.containsKey("Orange"));
+        System.out.println("Does Map contain value '5'? " + map.containsValue(5));
+
+        // Size of the Map
+        System.out.println("Size of the Map: " + map.size());
+    }
+}
+
+HashMap:- HashMap in Java is like the legacy Hashtable class, but it is not synchronized. It allows us to store the null elements as well, but there should be only one null key. 
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<String, Integer> hashMap = new HashMap<>();
+
+        // Adding key-value pairs to the HashMap
+        hashMap.put("Apple", 10);
+        hashMap.put("Banana", 5);
+        hashMap.put("Orange", 8);
+
+        // Accessing the value associated with a key
+        System.out.println("Value for 'Apple': " + hashMap.get("Apple"));
+
+        // Updating the value associated with a key
+        hashMap.put("Apple", 15);
+        System.out.println("Updated value for 'Apple': " + hashMap.get("Apple"));
+
+        // Removing a key-value pair from the HashMap
+        hashMap.remove("Banana");
+        System.out.println("HashMap after removing 'Banana': " + hashMap);
+
+        // Iterating over the HashMap using keySet()
+        System.out.print("Iterating using keySet(): ");
+        for (String key : hashMap.keySet()) {
+            System.out.print(key + "=" + hashMap.get(key) + " ");
+        }
+        System.out.println();
+
+        // Iterating over the HashMap using entrySet()
+        System.out.print("Iterating using entrySet(): ");
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.print(entry.getKey() + "=" + entry.getValue() + " ");
+        }
+        System.out.println();
+
+        // Checking if the HashMap contains a key or value
+        System.out.println("Does HashMap contain key 'Orange'? " + hashMap.containsKey("Orange"));
+        System.out.println("Does HashMap contain value '5'? " + hashMap.containsValue(5));
+
+        // Size of the HashMap
+        System.out.println("Size of the HashMap: " + hashMap.size());
+    }
+}
+
+LinkedHashMap:- Java LinkedHashMap contains values based on the key.
+Java LinkedHashMap contains unique elements.
+Java LinkedHashMap may have one null key and multiple null values.
+Java LinkedHashMap is non synchronized.
+Java LinkedHashMap maintains insertion order.
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+        // Create a LinkedHashMap
+        Map<String, Integer> linkedHashMap = new LinkedHashMap<>();
+
+        // Adding key-value pairs to the LinkedHashMap
+        linkedHashMap.put("Apple", 10);
+        linkedHashMap.put("Banana", 5);
+        linkedHashMap.put("Orange", 8);
+
+        // Accessing the value associated with a key
+        System.out.println("Value for 'Apple': " + linkedHashMap.get("Apple"));
+
+        // Updating the value associated with a key
+        linkedHashMap.put("Apple", 15);
+        System.out.println("Updated value for 'Apple': " + linkedHashMap.get("Apple"));
+
+        // Removing a key-value pair from the LinkedHashMap
+        linkedHashMap.remove("Banana");
+        System.out.println("LinkedHashMap after removing 'Banana': " + linkedHashMap);
+
+        // Iterating over the LinkedHashMap using keySet()
+        System.out.print("Iterating using keySet(): ");
+        for (String key : linkedHashMap.keySet()) {
+            System.out.print(key + "=" + linkedHashMap.get(key) + " ");
+        }
+        System.out.println();
+
+        // Iterating over the LinkedHashMap using entrySet()
+        System.out.print("Iterating using entrySet(): ");
+        for (Map.Entry<String, Integer> entry : linkedHashMap.entrySet()) {
+            System.out.print(entry.getKey() + "=" + entry.getValue() + " ");
+        }
+        System.out.println();
+
+        // Checking if the LinkedHashMap contains a key or value
+        System.out.println("Does LinkedHashMap contain key 'Orange'? " + linkedHashMap.containsKey("Orange"));
+        System.out.println("Does LinkedHashMap contain value '5'? " + linkedHashMap.containsValue(5));
+
+        // Size of the LinkedHashMap
+        System.out.println("Size of the LinkedHashMap: " + linkedHashMap.size());
+    }
+}
+
+TreeMap:- Java TreeMap contains values based on the key. It implements the NavigableMap interface and extends AbstractMap class.
+Java TreeMap contains only unique elements.
+Java TreeMap cannot have a null key but can have multiple null values.
+Java TreeMap is non synchronized.
+Java TreeMap maintains ascending order.
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        // Create a TreeMap
+        Map<String, Integer> treeMap = new TreeMap<>();
+
+        // Adding key-value pairs to the TreeMap
+        treeMap.put("Apple", 10);
+        treeMap.put("Banana", 5);
+        treeMap.put("Orange", 8);
+
+        // Accessing the value associated with a key
+        System.out.println("Value for 'Apple': " + treeMap.get("Apple"));
+
+        // Updating the value associated with a key
+        treeMap.put("Apple", 15);
+        System.out.println("Updated value for 'Apple': " + treeMap.get("Apple"));
+
+        // Removing a key-value pair from the TreeMap
+        treeMap.remove("Banana");
+        System.out.println("TreeMap after removing 'Banana': " + treeMap);
+
+        // Iterating over the TreeMap using keySet()
+        System.out.print("Iterating using keySet(): ");
+        for (String key : treeMap.keySet()) {
+            System.out.print(key + "=" + treeMap.get(key) + " ");
+        }
+        System.out.println();
+
+        // Iterating over the TreeMap using entrySet()
+        System.out.print("Iterating using entrySet(): ");
+        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+            System.out.print(entry.getKey() + "=" + entry.getValue() + " ");
+        }
+        System.out.println();
+
+        // Checking if the TreeMap contains a key or value
+        System.out.println("Does TreeMap contain key 'Orange'? " + treeMap.containsKey("Orange"));
+        System.out.println("Does TreeMap contain value '5'? " + treeMap.containsValue(5));
+
+        // Size of the TreeMap
+        System.out.println("Size of the TreeMap: " + treeMap.size());
+    }
+}
+
+Hashtable:- A Hashtable is an array of a list. Each list is known as a bucket. The position of the bucket is identified by calling the hashcode() method. A Hashtable contains values based on the key.
+Java Hashtable class contains unique elements.
+Java Hashtable class doesn't allow null key or value.
+Java Hashtable class is synchronized.
+
+public class HashtableExample {
+    public static void main(String[] args) {
+        // Create a Hashtable
+        Hashtable<String, Integer> hashtable = new Hashtable<>();
+
+        // Adding key-value pairs to the Hashtable
+        hashtable.put("Apple", 10);
+        hashtable.put("Banana", 5);
+        hashtable.put("Orange", 8);
+
+        // Accessing the value associated with a key
+        System.out.println("Value for 'Apple': " + hashtable.get("Apple"));
+
+        // Updating the value associated with a key
+        hashtable.put("Apple", 15);
+        System.out.println("Updated value for 'Apple': " + hashtable.get("Apple"));
+
+        // Removing a key-value pair from the Hashtable
+        hashtable.remove("Banana");
+        System.out.println("Hashtable after removing 'Banana': " + hashtable);
+
+        // Iterating over the Hashtable using enumeration()
+        System.out.print("Iterating using enumeration(): ");
+        Enumeration<String> keys = hashtable.keys();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            System.out.print(key + "=" + hashtable.get(key) + " ");
+        }
+        System.out.println();
+
+        // Checking if the Hashtable contains a key or value
+        System.out.println("Does Hashtable contain key 'Orange'? " + hashtable.containsKey("Orange"));
+        System.out.println("Does Hashtable contain value '5'? " + hashtable.containsValue(5));
+
+        // Size of the Hashtable
+        System.out.println("Size of the Hashtable: " + hashtable.size());
+    }
+}
+
+
+HashMap	Hashtable
+1) HashMap is non synchronized. It is not-thread safe and can't be shared between many threads without proper synchronization code.	Hashtable is synchronized. It is thread-safe and can be shared with many threads.
+2) HashMap allows one null key and multiple null values.	Hashtable doesn't allow any null key or value.
+3) HashMap is a new class introduced in JDK 1.2.	Hashtable is a legacy class.
+4) HashMap is fast.	Hashtable is slow.
+5) We can make the HashMap as synchronized by calling this code
+Map m = Collections.synchronizedMap(hashMap);	Hashtable is internally synchronized and can't be unsynchronized.
+6) HashMap is traversed by Iterator.	Hashtable is traversed by Enumerator and Iterator.
+7) Iterator in HashMap is fail-fast.	Enumerator in Hashtable is not fail-fast.
+8) HashMap inherits AbstractMap class.	Hashtable inherits Dictionary class.
+
+Comparable interface:-  allows objects to be sorted and ordered in a consistent and predictable manner. It is commonly used when a natural ordering exists for objects of a class.
+Comparator interface:- The Comparator interface provides a way to define custom sorting logic and allows objects to be ordered based on specific criteria 
+
+
+Comparable	Comparator
+1) Comparable provides a single sorting sequence. In other words, we can sort the collection on the basis of a single element such as id, name, and price.	The Comparator provides multiple sorting sequences. In other words, we can sort the collection on the basis of multiple elements such as id, name, and price etc.
+2) Comparable affects the original class, i.e., the actual class is modified.	Comparator doesn't affect the original class, i.e., the actual class is not modified.
+3) Comparable provides compareTo() method to sort elements.	Comparator provides compare() method to sort elements.
+4) Comparable is present in java.lang package.	A Comparator is present in the java.util package.
+5) We can sort the list elements of Comparable type by Collections.sort(List) method.	We can sort the list elements of Comparator type by Collections.sort(List, Comparator) method.
+
+vector:- Vector is like the dynamic array which can grow or shrink its size. Unlike array, we can store n-number of elements in it as there is no size limit.
+
+public class VectorExample {
+    public static void main(String[] args) {
+        // Create a vector
+        Vector<String> vector = new Vector<>();
+
+        // Add elements to the vector
+        vector.add("Apple");
+        vector.add("Banana");
+        vector.add("Orange");
+
+        // Iterate over the vector using an iterator
+        Iterator<String> iterator = vector.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+        // Get the element at index 1
+        String elementAtIndex1 = vector.get(1);
+        System.out.println("Element at index 1: " + elementAtIndex1);
+
+        // Replace the element at index 0
+        vector.set(0, "Mango");
+
+        // Remove the element at index 2
+        vector.remove(2);
+
+        // Check if the vector contains "Apple"
+        boolean containsApple = vector.contains("Apple");
+        System.out.println("Contains Apple: " + containsApple);
+
+        // Get the size of the vector
+        int size = vector.size();
+        System.out.println("Size of the vector: " + size);
+
+        // Clear the vector
+        vector.clear();
+
+        // Check if the vector is empty
+        boolean isEmpty = vector.isEmpty();
+        System.out.println("Is vector empty: " + isEmpty);
+    }
+}
+
+stack:- The stack is a linear data structure that is used to store the collection of objects. It is based on Last-In-First-Out (LIFO). Java collection framework provides many interfaces and classes to store the collection of objects. One of them is the Stack class that provides different operations such as push, pop, search, etc.
+
+public class StackExample {
+    public static void main(String[] args) {
+        // Create a stack
+        Stack<String> stack = new Stack<>();
+
+        // Push elements onto the stack
+        stack.push("Apple");
+        stack.push("Banana");
+        stack.push("Orange");
+
+        // Iterate over the stack
+        for (String element : stack) {
+            System.out.println(element);
+        }
+
+        // Peek at the top element
+        String topElement = stack.peek();
+        System.out.println("Top element: " + topElement);
+
+        // Pop an element from the stack
+        String poppedElement = stack.pop();
+        System.out.println("Popped element: " + poppedElement);
+
+        // Check if the stack is empty
+        boolean isEmpty = stack.empty();
+        System.out.println("Is stack empty: " + isEmpty);
+
+        // Search for an element in the stack
+        int position = stack.search("Apple");
+        System.out.println("Position of Apple: " + position);
+    }
+}
+
+
+Iterator Interface:-
+The Iterator interface in Java is used to iterate over elements in a collection, one element at a time. It provides methods for traversing and accessing elements in a sequential manner. 
+
+hasNext(): Checks if there are more elements in the collection to iterate over.
+
+next(): Returns the next element in the collection and advances the iterator.
+
+remove(): Removes the last element returned by the iterator from the underlying collection.
+
+public class IteratorExample {
+    public static void main(String[] args) {
+        // Create a list
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Orange");
+
+        // Get an iterator for the list
+        Iterator<String> iterator = list.iterator();
+
+        // Iterate over the elements using the iterator
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+        // Remove the element "Banana" using the iterator
+        iterator = list.iterator(); // Obtain a fresh iterator
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            if (element.equals("Banana")) {
+                iterator.remove();
+            }
+        }
+
+        // Print the modified list
+        System.out.println("Modified List:");
+        for (String element : list) {
+            System.out.println(element);
+        }
+    }
+}

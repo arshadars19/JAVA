@@ -44,4 +44,22 @@ public class NumberUtils {
 		return SumOfDigit;
 	}
 
+	public int reverseNumber(int number) {
+		if (number < 0) {
+			return -1;
+		}
+		if (number == 0) {
+			return 0;
+		}
+
+		int reversedNum = 0;
+
+		while (number > 0) {
+			int digit = number % 10;
+			reversedNum = reversedNum * 10 + digit;
+			number = number / 10;
+		}
+		return reversedNum;
+	}
+
 }

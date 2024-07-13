@@ -1,0 +1,62 @@
+Arraylist<String> name = new ArrayList<>();
+
+name.add("arshad");
+name.add("qwerty");
+name.add("qazxc");
+name.add("oikjn");
+name.add("rfgvbn");
+
+
+Collection.sort(name);
+collection.reverse(name);
+sout(name.get(2));
+
+sout(name);
+
+Iterator<String> iterate = name.iterator();
+while(iterator.hasnext())
+{
+sout(iterator.next());
+
+//
+for(String nam:name)
+{
+sout(nam);
+}
+
+Arraylist<Object> o1 = new Arraylist<>();
+
+o1.add(1);
+o1.add("hi");
+
+sout(o1);
+
+for(Object obj : o1)
+{
+
+sout(obj);}
+
+
+//map
+
+Map<Integer,String> map = new Hashmap<>();
+
+map.put(1,"one");
+map.put(2,"Two");
+map.put(3,"Three);
+3,three
+
+for(Map.Entry<String,Integer> entry :map.entryset())}
+{
+sout(entry.getkey()+ "=" entry.getvalue())}
+
+sout(map.get(3));
+
+map.remove(2)
+
+map.put(3,"four");
+
+o/p
+1,one
+2,two
+3,four

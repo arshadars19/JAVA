@@ -1,0 +1,244 @@
+public class demo{
+public static void main(String args[]){
+ 
+String name="ars";
+Scanner sc = new scanner(System.in);  
+String name = sc.next();//ars had
+System.out.println("Name:"+name);
+o/p:- next :- ars, nextline:- ars had
+
+Strings:-
+
+Declaration
+String name = "Tony";
+
+Taking Input
+Scanner sc = new Scanner(System.in);
+       String name = sc.next();
+
+Concatenation (Joining 2 strings)
+String firstName = "Tony";
+       String secondName = "Stark";
+       String fullName = firstName + " " + secondName;
+       System.out.println(fullName);
+
+Print length of a String
+String firstName = "Tony";
+       String secondName = "Stark";
+       String fullName = firstName + " " + secondName;
+       System.out.println(fullName.length());
+
+Access characters of a string
+String firstName = "Tony";
+       String secondName = "Stark";
+       String fullName = firstName + " " + secondName;
+       for(int i=0; i<fullName.length(); i++) {
+           System.out.println(fullName.charAt(i));
+       }
+
+Compare 2 strings
+import java.util.*;
+public class Strings {
+   public static void main(String args[]) {
+       String name1 = "Tony";
+       String name2 = "Tony";
+
+	if(name1.compareTo(name2)==0){
+           System.out.println("They are the same string");
+       } else {
+           System.out.println("They are different strings");
+       }
+
+       if(name1.equals(name2)) {
+           System.out.println("They are the same string");
+       } else {
+           System.out.println("They are different strings");
+       }
+      
+   }
+}
+
+
+Substring:-
+public class Strings {
+   public static void main(String args[]) {
+       String name = "TonyStark";
+       System.out.println(name.substring(0, 4));
+   }
+}
+
+ParseInt Method of Integer class
+public class Strings {
+   public static void main(String args[]) {
+       String str = "123";
+       int number = Integer.parseInt(str);
+       System.out.println(number);
+   }
+}
+
+ToString Method of String class
+public class Strings {
+   public static void main(String args[]) {
+      int number = 123;
+      String str = Integer.toString(number);
+      System.out.println(str.length());
+   }
+}
+--------------------------------------------------------------------------------------------
+String Builder:-
+Declaration
+StringBuilder sb = new StringBuilder("Abc");
+     System.out.println(sb);
+
+Get A Character from Index
+StringBuilder sb = new StringBuilder("Tony");
+     System.out.println(sb.charAt(0));
+
+Set a Character at Index
+StringBuilder sb = new StringBuilder("Tony");
+     sb.setCharAt(0, 'P');
+     System.out.println(sb);
+
+Insert a Character at Some Index
+import java.util.*;
+public class Strings {
+   public static void main(String args[]) {
+     StringBuilder sb = new StringBuilder("tony");
+     sb.insert(0, 'S');
+     System.out.println(sb);
+   }
+}
+
+Delete char at some Index
+import java.util.*;
+public class Strings {
+   public static void main(String args[]) {
+     StringBuilder sb = new StringBuilder("tony");
+     sb.insert(0, 'S');
+     System.out.println(sb);
+     sb.delete(0, 1);
+     System.out.println(sb);
+   }
+}
+
+
+Append a char 
+import java.util.*;
+public class Strings {
+   public static void main(String args[]) {
+     StringBuilder sb = new StringBuilder("Tony");
+     sb.append(" Stark");
+     System.out.println(sb); 
+   }
+}
+
+
+Print Length of String
+import java.util.*;
+public class Strings {
+   public static void main(String args[]) {
+     StringBuilder sb = new StringBuilder("Tony");
+     sb.append(" Stark");
+     System.out.println(sb); 
+     System.out.println(sb.length());
+   }
+}
+///////////////////////////////////////////////////
+public class StringMethods {
+
+    public static void main(String[] args) {
+        String str = "Hello, world";
+
+        // charAt() 
+        System.out.println(str.charAt(0)); // H
+
+        // compareTo()
+        System.out.println(str.compareTo("Hello, world")); //0
+        System.out.println(str.compareTo("Hello, world!"));
+        System.out.println(str.compareTo("Hello, universe!"));
+
+        // concat()
+        System.out.println(str.concat(" How are you?"));// append and concat why use append ??
+
+        // contains()
+        System.out.println(str.contains("world"));
+        System.out.println(str.contains("universe")); 
+
+        // endsWith()
+        System.out.println(str.endsWith("!")); 
+        System.out.println(str.endsWith("?")); 
+
+        // equals() 
+        System.out.println(str.equals("Hello, world!")); 
+        System.out.println(str.equals("Hello, universe!")); 
+
+        // equalsIgnoreCase()
+        System.out.println(str.equalsIgnoreCase("hello, world!"));
+        System.out.println(str.equalsIgnoreCase("Hello, universe!")); 
+
+        // format()
+        System.out.println(String.format("The value of pi is %.2f", Math.PI));
+
+        // indexOf()
+        System.out.println(str.indexOf("world"));
+
+        // intern()
+        String internedStr = str.intern();
+        System.out.println(internedStr == str);
+
+        // isEmpty()
+        System.out.println(str.isEmpty());
+
+        // join() 
+        String[] words = {"Hello", "world", "!"};
+        System.out.println(String.join(" ", words));
+
+        // lastIndexOf()
+        System.out.println(str.lastIndexOf("l"));
+
+        // length() 
+        System.out.println(str.length()); 
+
+        // replace() 
+        System.out.println(str.replace("world", "universe"));
+
+        // replaceAll() 
+        System.out.println(str.replaceAll("world", "universe"));///diff between both
+
+
+        // split()
+        String[] substrings = str.split(" ");
+        System.out.println(substrings[0]);
+        System.out.println(substrings[1]);
+        System.out.println(substrings[2]);
+
+        // startsWith() 
+        System.out.println(str.startsWith("Hello"));
+        System.out.println(str.startsWith("world"));
+
+        // substring() 
+        System.out.println(str.substring(0, 5));
+        System.out.println(str.substring(6));
+
+        // toCharArray() 
+        char[] chars = str.toCharArray();
+
+        // toLowerCase() 
+        System.out.println(str.toLowerCase());
+
+        // toUpperCase() 
+        System.out.println(str.toUpperCase());
+
+        // trim()
+        System.out.println(str.trim());
+
+        // valueOf() 
+        System.out.println(String.valueOf(12345));
+    }
+}
+
+
+list:- arraylist, linked list
+set:- hashset
+map:- hashmap
+ 

@@ -1,0 +1,116 @@
+New var keyword
+A new var keyword was added that allows local variables to be declared in a more concise manner. Consider this code:
+
+// java 8 way
+Map<String, List<MyDtoType>> myMap = new HashMap<String, List<MyDtoType>>();
+List<MyDomainObjectWithLongName> myList = aDelegate.fetchDomainObjects();
+// java 10 way
+var myMap = new HashMap<String, List<MyDtoType>>();
+var myList = aDelegate.fetchDomainObjects()
+When using var, the declaration it’s much, much shorter and, perhaps, a bit more readable than before. One must make sure to take the readability into account first, so in some cases, it may be wrong to hide the type from the programmer. Take care to name the variables properly.
+
+Unfortunately, it is not possible to assign a lambda to a variable using var keyword:
+
+// causes compilation error: 
+//   method reference needs an explicit target-type
+var fun = MyObject::mySpecialFunction;
+It is, however, possible to use the var in lambda expressions. Take a look at the example below:
+
+boolean isThereAneedle = stringsList.stream()
+  .anyMatch((@NonNull var s) -> s.equals(“needle”));
+Using var in lambda arguments, we can add annotations to the arguments. 
+
+Records:-----------------------------------------------------------------------------------------------------------------------------------------------
+One may say Records are Java’s answer to Lombok. At least partly, that is. Record is a type designed to store some data. Let me quote a fragment of JEP 395 that describes it well: 
+
+[…] a record acquires many standard members automatically:
+
+A private final field for each component of the state description;
+A public read accessor method for each component of the state description, with the same name and type as the component;
+A public constructor, whose signature is the same as the state description, which initializes each field from the corresponding argument;
+Implementations of equals and hashCode that say two records are equal if they are of the same type and contain the same state; and
+An implementation of toString that includes the string representation of all the record components, with their names.
+In other words, it’s roughly equivalent to Lombok’s @Value. In terms of language, it’s kind of similar to an enum. However, instead of declaring possible values, you declare the fields. Java generates some code based on that declaration and is capable of handling it in a better, optimized way. Like enum, it can’t extend or be extended by other classes, but it can implement an interface and have static fields and methods. Contrary to an enum, a record can be instantiated with the new keyword.
+
+A record may look like this:
+
+record BankAccount (String bankName, String accountNumber) implements HasAccountNumber {}
+And this is it. Pretty short. Short is good!
+
+Any automatically generated methods can be declared manually by the programmer. A set of constructors can be also declared. Moreover, in constructors, all fields that are definitely unassigned are implicitly assigned to their corresponding constructor parameters. It means that the assignment can be skipped entirely in the constructor!
+
+record BankAccount (String bankName, String accountNumber) implements HasAccountNumber {
+  public BankAccount { // <-- this is the constructor! no () !
+    if (accountNumber == null || accountNumber.length() != 26) {
+      throw new ValidationException(“Account number invalid”);
+    }
+    // no assignment necessary here!
+  }
+}
+For all the details like formal grammar, notes on usage and implementation, make sure to consult the JEP 359. You could also check StackOverflow for the most upvoted questions on Java Records.
+
+Extended switch expressions-----------------------------------------------------------------------------------------------------------------------------------------------
+Switch is present in a lot of languages, but over the years it got less and less useful because of the limitations it had. Other parts of Java grew, switch did not. Nowadays switch cases can be grouped much more easily and in a more readable manner (note there’s no break!) and the switch expression itself actually returns a result.
+
+DayOfWeek dayOfWeek = LocalDate.now().getDayOfWeek();
+boolean freeDay = switch (dayOfWeek) {
+    case MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY -> false;
+    case SATURDAY, SUNDAY -> true;
+};
+Even more can be achieved with the new yield keyword that allows returning a value from inside a code block. It’s virtually a return that works from inside a case block and sets that value as a result of its switch. It can also accept an expression instead of a single value. Let’s take a look at an example:
+
+DayOfWeek dayOfWeek = LocalDate.now().getDayOfWeek();
+boolean freeDay = switch (dayOfWeek) {
+    case MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY -> {
+      System.out.println("Work work work");
+      yield false;
+    }
+    case SATURDAY, SUNDAY -> {
+      System.out.println("Yey, a free day!");
+      yield true;
+    }
+};
+
+Instanceof pattern matching-----------------------------------------------------------------------------------------------------------------------------------------------
+While not a groundbreaking change, in my opinion, instanceof solves one of the more irritating problems with the Java language. Did you ever have to use such syntax?
+
+if (obj instanceof MyObject) {
+  MyObject myObject = (MyObject) obj;
+  // … further logic
+}
+Now, you won’t have to. Java can now create a local variable inside the if, like this:
+
+if (obj instanceof MyObject myObject) {
+  // … the same logic
+}
+It is just one line removed, but it was a totally unnecessary line in terms of the code flow. Moreover, the declared variable can be used in the same if condition, like this:
+
+if (obj instanceof MyObject myObject && myObject.isValid()) {
+  // … the same logic
+}
+
+
+
+Sealed classes-----------------------------------------------------------------------------------------------------------------------------------------------
+This is a tricky one to explain. Let’s start with this – did the “no default” warning in switch ever annoy you? You covered all the options that the domain accepted, but still, the warning was there. Sealed classes let you get rid of such a warning for the instanceof type checks.
+
+If you have a hierarchy like this:
+
+public abstract sealed class Animal
+    permits Dog, Cat {
+}
+public final class Dog extends Animal {
+}
+public final class Cat extends Animal {
+}
+You will now be able to do this:
+
+if (animal instanceof Dog d) {
+    return d.woof();
+} 
+else if (animal instanceof Cat c) {
+    return c.meow();
+}
+And you won’t get a warning. Well, let me rephrase that: if you get a warning with a similar sequence, that warning will be meaningful! And more information is always good.
+
+I have mixed feelings about this change. Introducing a cyclic reference does not seem like a good practice. If I used this in my production code, I’d do my best to hide it somewhere deep and never show it to the outside world – I mean, never expose it through an API, not that I would be ashamed of using it in a valid situation.

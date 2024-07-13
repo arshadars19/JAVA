@@ -7,6 +7,7 @@ public class NumberUtilsRunner {
 		System.out.println(num.getLastDigit(12346));
 		System.out.println(num.getNumberofDigits(12345));
 		System.out.println(num.getSumofDigits(12));
+		System.out.println(num.reverseNumber(1234));
 
 	}
 
