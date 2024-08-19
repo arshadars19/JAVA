@@ -25,7 +25,7 @@ public class book {
 		this.review.add(review);
 	}
 
-	@Override
+	// @Override
 	public String toString() {
 		return "book [id=" + id + ", name=" + name + ", author=" + author + ", review=" + review + "]";
 	}
